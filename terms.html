@@ -3,259 +3,501 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Términos y Condiciones | PiGuard</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <title>Términos y Condiciones — PiGuard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-main: #0B1120;
-            --bg-card: rgba(30, 41, 59, 0.7);
-            --border: rgba(56, 189, 248, 0.2);
-            --accent: #38BDF8;
-            --accent-glow: rgba(56, 189, 248, 0.15);
-            --text-primary: #F8FAFC;
-            --text-secondary: #94A3B8;
-            --success: #34D399;
+            --color-void:       hsl(220 10% 4%);   
+            --color-fondo:      hsl(220 10% 8%);   
+            --color-tarjeta:    hsl(220 10% 12%);  
+            --color-secundario: hsl(220 10% 16%);  
+            --color-borde:      hsl(220 10% 22%);  
+            --color-ash:        hsl(220 6% 45%);
+            --color-fog:        hsl(220 8% 60%);
+            --color-mist:       hsl(220 15% 85%);
+            --color-texto:      hsl(220 10% 94%);  
+            --color-paper:      hsl(0 0% 100%);
+            --color-acid-lime:  hsl(64 89% 54%);   
+            --color-coral:      hsl(0 79% 63%);   
+            --font-sans: 'Inter', ui-sans-serif, system-ui, -apple-system, sans-serif;
+            --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+            
+            --radius-card: 12px;
+            --radius-btn: 6px;
+            --radius-pill: 9999px;
+            --radius-badge: 4px;
         }
-        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-main);
-            background-image: radial-gradient(circle at top left, rgba(56, 189, 248, 0.08), transparent 40%);
-            color: var(--text-primary);
-            line-height: 1.7;
-            padding-bottom: 60px;
+            font-family: var(--font-sans);
+            font-feature-settings: "cv01" on, "ss03" on, "zero" on;
+            background-color: var(--color-void);
+            color: var(--color-mist);
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 1.6;
+            letter-spacing: -0.011em;
+            -webkit-font-smoothing: antialiased;
         }
+
         header {
-            background: rgba(15, 23, 42, 0.85);
+            background-color: hsla(220, 10%, 4%, 0.85);
             backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border);
+            border-bottom: 1px solid var(--color-borde);
             position: sticky;
             top: 0;
-            z-index: 100;
-            padding: 16px 24px;
+            z-index: 50;
         }
-        .nav-container {
-            max-width: 900px;
+
+        .nav-inner {
+            max-width: 960px;
             margin: 0 auto;
+            padding: 12px 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
+
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--color-paper);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            letter-spacing: -0.015em;
+        }
+
+        .brand svg {
+            width: 20px;
+            height: 20px;
+            color: var(--color-paper);
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-link {
+            color: var(--color-fog);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 400;
+            padding: 6px 12px;
+            border-radius: var(--radius-btn);
+            transition: color 0.15s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--color-paper);
+        }
+
+        .nav-link.active {
+            color: var(--color-paper);
+            background-color: var(--color-tarjeta);
+            box-shadow: inset 0 0 0 1px var(--color-borde);
+        }
+
+        .lang-group {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            margin-left: 8px;
+            padding-left: 12px;
+            border-left: 1px solid var(--color-borde);
+        }
+
+        .btn-lang {
+            font-family: var(--font-sans);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: var(--radius-btn);
+            border: 1px solid var(--color-borde);
+            background: transparent;
+            color: var(--color-mist);
+            cursor: pointer;
+            transition: all 0.15s ease;
+        }
+
+        .btn-lang:hover {
+            border-color: var(--color-fog);
+        }
+
+        .btn-lang.active {
+            background-color: var(--color-acid-lime);
+            color: var(--color-void);
+            border-color: var(--color-acid-lime);
+            box-shadow: 0 1px 1px hsla(0, 0%, 0%, 0.25);
+        }
+
+        main {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 64px 24px 96px;
+        }
+
+        .hero {
+            margin-bottom: 64px;
+        }
+
+        .pill-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background-color: hsla(220, 10%, 94%, 0.05);
+            color: var(--color-mist);
+            border: 1px solid var(--color-borde);
+            border-radius: var(--radius-pill);
+            padding: 4px 12px;
+            font-size: 12px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 500;
+            color: var(--color-paper);
+            line-height: 1.05;
+            letter-spacing: -0.022em;
+            margin-bottom: 16px;
+        }
+
+        .hero-sub {
+            color: var(--color-fog);
+            font-size: 16px;
+            max-width: 640px;
+            margin-bottom: 20px;
+        }
+
+        .meta-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--color-ash);
+            letter-spacing: -0.013em;
+        }
+
+        .section-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .card {
+            background-color: var(--color-fondo);
+            border-radius: var(--radius-card);
+            box-shadow: inset 0 0 0 1px var(--color-borde);
+            padding: 24px;
+        }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 16px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid var(--color-tarjeta);
+        }
+
+        h2 {
+            font-size: 17px;
+            font-weight: 500;
+            color: var(--color-texto);
+            letter-spacing: -0.012em;
+        }
+
+        .doc-id {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            color: var(--color-ash);
+        }
+
+        p {
+            color: var(--color-mist);
+            margin-bottom: 12px;
+        }
+
+        p:last-child {
+            margin-bottom: 0;
+        }
+
+        .nested-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 16px;
+        }
+
+        .nested-item {
+            background-color: var(--color-tarjeta);
+            border-radius: var(--radius-btn);
+            box-shadow: inset 0 0 0 1px var(--color-borde);
+            padding: 16px;
+        }
+
+        .nested-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .item-title {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--color-paper);
+        }
+
+        .tag-warn {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--color-coral);
+            border: 1px solid hsla(0, 79%, 63%, 0.35);
+            background-color: hsla(0, 79%, 63%, 0.08);
+            padding: 1px 6px;
+            border-radius: var(--radius-badge);
+        }
+
+        .nested-desc {
+            font-size: 14px;
+            color: var(--color-fog);
+            margin: 0;
+        }
+
+        code.inline {
+            font-family: var(--font-mono);
+            font-size: 12px;
+            background-color: var(--color-secundario);
+            color: var(--color-texto);
+            padding: 2px 6px;
+            border-radius: var(--radius-badge);
+        }
+
+        footer {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 24px;
+            border-top: 1px solid var(--color-borde);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             gap: 12px;
+            font-size: 13px;
+            color: var(--color-ash);
         }
-        .brand {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            color: var(--text-primary);
-            text-decoration: none;
+
+        .hidden {
+            display: none;
         }
-        .brand svg { width: 28px; height: 28px; color: var(--accent); }
-        .nav-links { display: flex; gap: 16px; align-items: center; }
-        .nav-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: color 0.2s;
-        }
-        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
-        .lang-switch {
-            display: flex;
-            background: #0F172A;
-            border: 1px solid var(--border);
-            border-radius: 8px;
-            overflow: hidden;
-        }
-        .lang-btn {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            padding: 6px 14px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        .lang-btn.active {
-            background: var(--accent);
-            color: #0F172A;
-        }
-        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
-        .hero {
-            text-align: center;
-            margin-bottom: 40px;
-            padding: 32px;
-            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.9));
-            border: 1px solid var(--border);
-            border-radius: 16px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
-        }
-        .badge {
-            display: inline-block;
-            background: var(--accent-glow);
-            color: var(--accent);
-            border: 1px solid var(--border);
-            padding: 4px 12px;
-            border-radius: 99px;
-            font-size: 0.75rem;
-            font-weight: 600;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
-        }
-        h1 { font-size: 2rem; margin-bottom: 10px; letter-spacing: -0.5px; }
-        .meta { color: var(--text-secondary); font-size: 0.9rem; }
-        .card {
-            background: var(--bg-card);
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            border-radius: 14px;
-            padding: 28px;
-            margin-bottom: 24px;
-            transition: border-color 0.2s;
-        }
-        .card:hover { border-color: var(--border); }
-        h2 {
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-bottom: 14px;
-        }
-        p, li { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 12px; }
-        ul { list-style: none; }
-        li {
-            position: relative;
-            padding-left: 22px;
-            margin-bottom: 14px;
-        }
-        li::before {
-            content: "▹";
-            position: absolute;
-            left: 0;
-            color: var(--accent);
-            font-weight: bold;
-        }
-        code {
-            background: #0F172A;
-            color: var(--success);
-            padding: 2px 7px;
-            border-radius: 5px;
-            font-size: 0.85rem;
-            border: 1px solid rgba(52, 211, 153, 0.2);
-        }
-        footer {
-            text-align: center;
-            margin-top: 50px;
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-        }
-        .hidden { display: none; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="nav-container">
+    <div class="nav-inner">
         <a href="index.html" class="brand">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
                 <path d="m9 12 2 2 4-4"/>
             </svg>
             PiGuard
         </a>
-        <div class="nav-links">
-            <a href="index.html" id="nav-privacy">Privacidad</a>
-            <a href="terms.html" class="active" id="nav-terms">Términos</a>
-            <div class="lang-switch">
-                <button class="lang-btn active" onclick="setLang('es')" id="btn-es">ES</button>
-                <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+        <div class="nav-actions">
+            <a href="index.html" class="nav-link" id="nav-privacy">Privacidad</a>
+            <a href="terms.html" class="nav-link active" id="nav-terms">Términos</a>
+            <div class="lang-group">
+                <button type="button" class="btn-lang active" id="btn-es" onclick="setLang('es')">ES</button>
+                <button type="button" class="btn-lang" id="btn-en" onclick="setLang('en')">EN</button>
             </div>
         </div>
     </div>
 </header>
 
-<div class="container">
-    <!-- ESPAÑOL -->
-    <div id="content-es">
-        <div class="hero">
-            <span class="badge">ACUERDO DE LICENCIA</span>
+<main>
+    <div id="view-es">
+        <section class="hero">
+            <div class="pill-status">
+                <span>Acuerdo de Licencia de Usuario Final</span>
+            </div>
             <h1>Términos y Condiciones de Uso</h1>
-            <p class="meta">Desarrollador: Lucas G. Flores &bull; Vigencia: 12 de noviembre de 2026</p>
-        </div>
+            <p class="hero-sub">Condiciones operativas, alcances de responsabilidad preventiva y propiedad intelectual de la aplicación PiGuard.</p>
+            <div class="meta-strip">
+                <span>DOC-ID: PG-TERM-2026</span>
+                <span>DEV: LUCAS G. FLORES</span>
+                <span>VIGENCIA: 2026-11-12</span>
+            </div>
+        </section>
 
-        <div class="card">
-            <h2>1. Aceptación y Licencia de Uso</h2>
-            <p>Al descargar o utilizar <strong>PiGuard</strong>, aceptas cumplir con estos términos. Se te concede una licencia personal, gratuita, revocable, no exclusiva e intransferible para instalar y operar la aplicación en dispositivos Android compatibles.</p>
-        </div>
+        <div class="section-stack">
+            <article class="card">
+                <div class="card-header">
+                    <h2>1. Aceptación y Licencia de Uso</h2>
+                    <span class="doc-id">TRM-01</span>
+                </div>
+                <p>Al instalar o ejecutar <strong>PiGuard</strong>, aceptas vincularte a estos términos. Se otorga una licencia personal, gratuita, revocable, no exclusiva e intransferible para operar la aplicación en dispositivos Android compatibles.</p>
+            </article>
 
-        <div class="card">
-            <h2>2. Naturaleza Preventiva y Responsabilidad del Usuario</h2>
-            <p>PiGuard es una herramienta de concienciación y utilidad preventiva. No garantiza inmunidad absoluta frente a amenazas externas o robos físicos. Como usuario, eres responsable de:</p>
-            <ul>
-                <li>Custodiar tu contraseña maestra de cifrado <code>AES-256</code> (el desarrollador no tiene forma técnica de recuperar copias cifradas sin clave).</li>
-                <li>Proteger la confidencialidad de tu palabra clave de alarma remota por SMS.</li>
-                <li>Revisar los elementos seleccionados antes de confirmar limpiezas de almacenamiento.</li>
-            </ul>
-        </div>
+            <article class="card">
+                <div class="card-header">
+                    <h2>2. Naturaleza Preventiva y Responsabilidad del Usuario</h2>
+                    <span class="doc-id">TRM-02</span>
+                </div>
+                <p>PiGuard constituye una herramienta de concienciación y utilidad preventiva; no garantiza inmunidad absoluta frente a vectores externos de ataque ni pérdidas físicas. El usuario asume la responsabilidad directa sobre:</p>
 
-        <div class="card">
-            <h2>3. Restricciones y Propiedad Intelectual</h2>
-            <p>Queda estrictamente prohibido descompilar, realizar ingeniería inversa, redistribuir el código o emplear los escenarios del simulador de phishing con fines maliciosos fuera del entorno de entrenamiento de la aplicación. Todo el código, diseño y marca pertenecen a <strong>Lucas G. Flores</strong>.</p>
-        </div>
+                <div class="nested-list">
+                    <div class="nested-item">
+                        <div class="nested-top">
+                            <span class="item-title">Custodia de Llave Maestra AES-256</span>
+                            <span class="tag-warn">ZERO-RECOVERY</span>
+                        </div>
+                        <p class="nested-desc">El desarrollador no posee acceso ni mecanismos técnicos para descifrar copias de seguridad en <code class="inline">appDataFolder</code> si olvidas tu contraseña maestra.</p>
+                    </div>
 
-        <div class="card">
-            <h2>4. Soporte y Contacto Legal</h2>
-            <p>Para reportar incidencias, sugerencias o consultas sobre estos términos, escribe a: <code>soporte.piguard@gmail.com</code></p>
+                    <div class="nested-item">
+                        <div class="nested-top">
+                            <span class="item-title">Confidencialidad de Comando SMS</span>
+                            <span class="tag-warn">SECURITY</span>
+                        </div>
+                        <p class="nested-desc">Debes mantener en reserva la palabra clave configurada para el disparador pasivo de la alarma antirrobo remota.</p>
+                    </div>
+
+                    <div class="nested-item">
+                        <div class="nested-top">
+                            <span class="item-title">Verificación de Limpieza Local</span>
+                            <span class="tag-warn">USER ACTION</span>
+                        </div>
+                        <p class="nested-desc">Revisar los elementos seleccionados antes de confirmar la eliminación definitiva de archivos residuales o cachés.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <h2>3. Restricciones y Propiedad Intelectual</h2>
+                    <span class="doc-id">TRM-03</span>
+                </div>
+                <p>Queda prohibido descompilar, realizar ingeniería inversa, redistribuir el código fuente o emplear los escenarios del simulador de phishing con fines maliciosos fuera del entorno de entrenamiento de la aplicación. Todo el código, diseño e identidad visual pertenecen exclusivamente a <strong>Lucas G. Flores</strong>.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <h2>4. Contacto y Soporte Legal</h2>
+                    <span class="doc-id">TRM-04</span>
+                </div>
+                <p>Para consultas técnicas, reportes de seguridad o requerimientos legales, comunícate a través de: <code class="inline">soporte.piguard@gmail.com</code></p>
+            </article>
         </div>
     </div>
 
     <!-- ENGLISH -->
-    <div id="content-en" class="hidden">
-        <div class="hero">
-            <span class="badge">END USER LICENSE</span>
+    <div id="view-en" class="hidden">
+        <section class="hero">
+            <div class="pill-status">
+                <span>End User License Agreement</span>
+            </div>
             <h1>Terms & Conditions of Use</h1>
-            <p class="meta">Service Provider: Lucas G. Flores &bull; Effective Date: November 12, 2026</p>
-        </div>
+            <p class="hero-sub">Operational terms, preventive liability scope, and intellectual property governing the PiGuard mobile application.</p>
+            <div class="meta-strip">
+                <span>DOC-ID: PG-TERM-2026</span>
+                <span>DEV: LUCAS G. FLORES</span>
+                <span>EFFECTIVE: 2026-11-12</span>
+            </div>
+        </section>
 
-        <div class="card">
-            <h2>1. Acceptance & License Grant</h2>
-            <p>By downloading or using <strong>PiGuard</strong>, you agree to these terms. The Service Provider grants you a personal, free, revocable, non-exclusive, non-transferable license to install and use the application on compatible Android devices.</p>
-        </div>
+        <div class="section-stack">
+            <article class="card">
+                <div class="card-header">
+                    <h2>1. Acceptance & License Grant</h2>
+                    <span class="doc-id">TRM-01</span>
+                </div>
+                <p>By installing or running <strong>PiGuard</strong>, you agree to these terms. The Service Provider grants you a personal, free, revocable, non-exclusive, non-transferable license to operate the application on compatible Android devices.</p>
+            </article>
 
-        <div class="card">
-            <h2>2. Preventive Nature & User Responsibility</h2>
-            <p>PiGuard provides educational and preventive security utilities. It does not guarantee absolute immunity against cyber threats or physical theft. You remain solely responsible for:</p>
-            <ul>
-                <li>Safeguarding your <code>AES-256</code> master encryption password (the developer cannot technically recover encrypted backups without your key).</li>
-                <li>Keeping your secret SMS remote alarm trigger keyword confidential.</li>
-                <li>Reviewing selected files prior to confirming storage cleanup actions.</li>
-            </ul>
-        </div>
+            <article class="card">
+                <div class="card-header">
+                    <h2>2. Preventive Nature & User Responsibility</h2>
+                    <span class="doc-id">TRM-02</span>
+                </div>
+                <p>PiGuard provides educational and preventive security utilities; it does not guarantee absolute immunity against external threat vectors or physical theft. You remain solely responsible for:</p>
 
-        <div class="card">
-            <h2>3. Restrictions & Intellectual Property</h2>
-            <p>You may not decompile, reverse engineer, redistribute, or misuse the phishing simulator outside the educational app environment. All source code, UI assets, and branding belong exclusively to <strong>Lucas G. Flores</strong>.</p>
-        </div>
+                <div class="nested-list">
+                    <div class="nested-item">
+                        <div class="nested-top">
+                            <span class="item-title">AES-256 Master Key Custody</span>
+                            <span class="tag-warn">ZERO-RECOVERY</span>
+                        </div>
+                        <p class="nested-desc">The developer holds zero access or technical means to decrypt <code class="inline">appDataFolder</code> backups if your master password is lost.</p>
+                    </div>
 
-        <div class="card">
-            <h2>4. Support & Legal Inquiries</h2>
-            <p>For technical support, feedback, or legal questions regarding these terms, contact: <code>soporte.piguard@gmail.com</code></p>
+                    <div class="nested-item">
+                        <div class="nested-top">
+                            <span class="item-title">SMS Trigger Confidentiality</span>
+                            <span class="tag-warn">SECURITY</span>
+                        </div>
+                        <p class="nested-desc">You must safeguard the secret keyword configured for the passive remote anti-theft alarm listener.</p>
+                    </div>
+
+                    <div class="nested-item">
+                        <div class="nested-top">
+                            <span class="item-title">Storage Cleanup Verification</span>
+                            <span class="tag-warn">USER ACTION</span>
+                        </div>
+                        <p class="nested-desc">Reviewing selected items prior to confirming permanent deletion of residual files or caches.</p>
+                    </div>
+                </div>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <h2>3. Restrictions & Intellectual Property</h2>
+                    <span class="doc-id">TRM-03</span>
+                </div>
+                <p>You may not decompile, reverse engineer, redistribute source code, or misuse phishing simulation scenarios outside the educational app environment. All source code, UI design, and branding belong exclusively to <strong>Lucas G. Flores</strong>.</p>
+            </article>
+
+            <article class="card">
+                <div class="card-header">
+                    <h2>4. Support & Legal Inquiries</h2>
+                    <span class="doc-id">TRM-04</span>
+                </div>
+                <p>For technical support, security disclosures, or legal questions regarding these terms, contact: <code class="inline">soporte.piguard@gmail.com</code></p>
+            </article>
         </div>
     </div>
+</main>
 
-    <footer>
-        &copy; 2026 PiGuard Security &bull; Lucas G. Flores
-    </footer>
-</div>
+<footer>
+    <span>PiGuard Security Instrument &mdash; Lucas G. Flores</span>
+    <span style="font-family: var(--font-mono); font-size: 12px;">HSL-220 / v2026.11</span>
+</footer>
 
 <script>
     function setLang(lang) {
-        document.getElementById('content-es').classList.toggle('hidden', lang !== 'es');
-        document.getElementById('content-en').classList.toggle('hidden', lang !== 'en');
-        document.getElementById('btn-es').classList.toggle('active', lang === 'es');
-        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
-        document.getElementById('nav-privacy').textContent = lang === 'es' ? 'Privacidad' : 'Privacy';
-        document.getElementById('nav-terms').textContent = lang === 'es' ? 'Términos' : 'Terms';
+        const isEs = lang === 'es';
+        document.getElementById('view-es').classList.toggle('hidden', !isEs);
+        document.getElementById('view-en').classList.toggle('hidden', isEs);
+        document.getElementById('btn-es').classList.toggle('active', isEs);
+        document.getElementById('btn-en').classList.toggle('active', !isEs);
+        document.getElementById('nav-privacy').textContent = isEs ? 'Privacidad' : 'Privacy';
+        document.getElementById('nav-terms').textContent = isEs ? 'Términos' : 'Terms';
     }
 </script>
 
