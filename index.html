@@ -3,68 +3,264 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Política de Privacidad / Privacy Policy - PiGuard</title>
+    <title>Política de Privacidad | PiGuard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #0F172A;
-            color: #E2E8F0;
-            padding: 2em;
-            max-width: 850px;
-            margin: 0 auto;
-            line-height: 1.6;
+        :root {
+            --bg-main: #0B1120;
+            --bg-card: rgba(30, 41, 59, 0.7);
+            --border: rgba(56, 189, 248, 0.2);
+            --accent: #38BDF8;
+            --accent-glow: rgba(56, 189, 248, 0.15);
+            --text-primary: #F8FAFC;
+            --text-secondary: #94A3B8;
+            --success: #34D399;
         }
-        h1, h2, strong { color: #38BDF8; }
-        ul { padding-left: 20px; }
-        .box { background: #1E293B; padding: 24px; border-radius: 12px; margin-bottom: 30px; }
-        .lang-badge { display: inline-block; background: #0F172A; color: #38BDF8; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: bold; margin-bottom: 10px; }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-main);
+            background-image: radial-gradient(circle at top right, rgba(56, 189, 248, 0.08), transparent 40%);
+            color: var(--text-primary);
+            line-height: 1.7;
+            padding-bottom: 60px;
+        }
+        header {
+            background: rgba(15, 23, 42, 0.85);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            padding: 16px 24px;
+        }
+        .nav-container {
+            max-width: 900px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+        .brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+        .brand svg { width: 28px; height: 28px; color: var(--accent); }
+        .nav-links { display: flex; gap: 16px; align-items: center; }
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+        .lang-switch {
+            display: flex;
+            background: #0F172A;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            padding: 6px 14px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        .lang-btn.active {
+            background: var(--accent);
+            color: #0F172A;
+        }
+        .container { max-width: 900px; margin: 40px auto; padding: 0 20px; }
+        .hero {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 32px;
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.6), rgba(15, 23, 42, 0.9));
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+        .badge {
+            display: inline-block;
+            background: var(--accent-glow);
+            color: var(--accent);
+            border: 1px solid var(--border);
+            padding: 4px 12px;
+            border-radius: 99px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+        }
+        h1 { font-size: 2rem; margin-bottom: 10px; letter-spacing: -0.5px; }
+        .meta { color: var(--text-secondary); font-size: 0.9rem; }
+        .card {
+            background: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 24px;
+            transition: border-color 0.2s;
+        }
+        .card:hover { border-color: var(--border); }
+        h2 {
+            color: var(--accent);
+            font-size: 1.2rem;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        p, li { color: var(--text-secondary); font-size: 0.95rem; margin-bottom: 12px; }
+        ul { list-style: none; }
+        li {
+            position: relative;
+            padding-left: 22px;
+            margin-bottom: 14px;
+        }
+        li::before {
+            content: "▹";
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+        code {
+            background: #0F172A;
+            color: var(--success);
+            padding: 2px 7px;
+            border-radius: 5px;
+            font-size: 0.85rem;
+            border: 1px solid rgba(52, 211, 153, 0.2);
+        }
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+        .hidden { display: none; }
     </style>
 </head>
 <body>
 
-    <div class="box">
-        <span class="lang-badge">🇪🇸 ESPAÑOL</span>
-        <h1>Política de Privacidad y Permisos - PiGuard</h1>
-        <p><strong>Proveedor del Servicio:</strong> Lucas G. Flores | <strong>Fecha:</strong> 12 de noviembre de 2026</p>
+<header>
+    <div class="nav-container">
+        <a href="index.html" class="brand">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+            </svg>
+            PiGuard
+        </a>
+        <div class="nav-links">
+            <a href="index.html" class="active" id="nav-privacy">Privacidad</a>
+            <a href="terms.html" id="nav-terms">Términos</a>
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLang('es')" id="btn-es">ES</button>
+                <button class="lang-btn" onclick="setLang('en')" id="btn-en">EN</button>
+            </div>
+        </div>
+    </div>
+</header>
 
-        <h2>1. Procesamiento Local de Datos</h2>
-        <p>PiGuard opera bajo una arquitectura de procesamiento exclusivamente local. No recopilamos, vendemos ni transmitimos datos personales ni archivos analizados a servidores de terceros.</p>
+<div class="container">
+    <!-- ESPAÑOL -->
+    <div id="content-es">
+        <div class="hero">
+            <span class="badge">ARQUITECTURA ZERO-KNOWLEDGE</span>
+            <h1>Política de Privacidad y Permisos</h1>
+            <p class="meta">Desarrollador: Lucas G. Flores &bull; Vigencia: 12 de noviembre de 2026</p>
+        </div>
 
-        <h2>2. Justificación de Permisos Sensibles</h2>
-        <ul>
-            <li><strong>MANAGE_EXTERNAL_STORAGE:</strong> Utilizado exclusivamente en Android 11+ para calcular firmas de integridad SHA-256 en archivos locales y realizar limpiezas de caché autorizadas por el usuario.</li>
-            <li><strong>UsageStatsManager:</strong> Utilizado localmente para analizar hábitos de uso nocturno e higiene digital. Los datos nunca salen del dispositivo.</li>
-            <li><strong>RECEIVE_SMS:</strong> Utilizado de forma pasiva únicamente para detectar la palabra clave de emergencia configurada por el usuario y activar la alarma antirrobo. No leemos ni almacenamos otros mensajes.</li>
-        </ul>
+        <div class="card">
+            <h2>1. Procesamiento Exclusivamente Local</h2>
+            <p><strong>PiGuard</strong> está diseñada bajo una estricta arquitectura local. No recopilamos, almacenamos en la nube propia, vendemos ni compartimos datos personales, historiales ni archivos analizados con terceros.</p>
+        </div>
 
-        <h2>3. Respaldos Cifrados en Google Drive</h2>
-        <p>Al iniciar sesión con Google, las copias de seguridad de la racha y ajustes se cifran con <strong>AES-256</strong> en el dispositivo antes de subirse a la carpeta privada <code>appDataFolder</code>. El desarrollador no tiene acceso a tus datos ni a tu clave maestra.</p>
+        <div class="card">
+            <h2>2. Justificación Transparente de Permisos</h2>
+            <ul>
+                <li><strong>Acceso al Almacenamiento (<code>MANAGE_EXTERNAL_STORAGE</code>):</strong> Utilizado únicamente en Android 11+ para calcular firmas criptográficas <code>SHA-256</code> de archivos locales y ejecutar limpiezas de caché iniciadas explícitamente por el usuario.</li>
+                <li><strong>Estadísticas de Uso (<code>UsageStatsManager</code>):</strong> Procesado de forma 100% local para generar reportes de higiene digital nocturna. Ninguna métrica abandona tu teléfono.</li>
+                <li><strong>Recepción de SMS (<code>RECEIVE_SMS</code>):</strong> Escucha pasiva exclusiva para detectar la palabra clave de pánico configurada por el usuario y activar la alarma antirrobo remota. PiGuard nunca lee, guarda ni transmite el contenido de tus mensajes personales.</li>
+            </ul>
+        </div>
 
-        <h2>4. Eliminación de Datos y Edad Mínima</h2>
-        <p>Puedes desvincular tu cuenta desde la app o borrar tus respaldos directamente en Google Drive. Desinstalar la app elimina todos los datos locales. Aplicación dirigida a mayores de 13 años. Contacto: <strong>soporte.piguard@gmail.com</strong></p>
+        <div class="card">
+            <h2>3. Respaldos Cifrados en Google Drive</h2>
+            <p>Si decides vincular tu cuenta de Google, tus rachas y ajustes se cifran localmente mediante el estándar <strong>AES-256</strong> antes de enviarse a la carpeta privada <code>appDataFolder</code> de tu propio Google Drive. Ni el desarrollador ni terceros tienen acceso a tu archivo ni a tu contraseña maestra.</p>
+        </div>
+
+        <div class="card">
+            <h2>4. Control, Eliminación de Datos y Edad Mínima</h2>
+            <p>Puedes revocar el acceso de Google Drive en cualquier momento desde la app o eliminar los respaldos desde la configuración de tu cuenta de Google. Desinstalar la aplicación borra permanentemente todos los datos y llaves locales.</p>
+            <p>Esta aplicación está dirigida a usuarios mayores de <strong>13 años</strong>. Contacto oficial: <code>soporte.piguard@gmail.com</code></p>
+        </div>
     </div>
 
-    <div class="box">
-        <span class="lang-badge">🇺🇸 ENGLISH</span>
-        <h1>Privacy Policy & Permissions - PiGuard</h1>
-        <p><strong>Service Provider:</strong> Lucas G. Flores | <strong>Effective Date:</strong> November 12, 2026</p>
+    <!-- ENGLISH -->
+    <div id="content-en" class="hidden">
+        <div class="hero">
+            <span class="badge">ZERO-KNOWLEDGE ARCHITECTURE</span>
+            <h1>Privacy Policy & Permissions</h1>
+            <p class="meta">Service Provider: Lucas G. Flores &bull; Effective Date: November 12, 2026</p>
+        </div>
 
-        <h2>1. Local Data Processing</h2>
-        <p>PiGuard operates under an exclusively local processing architecture. We do not collect, sell, or transmit personal data or scanned files to third-party servers.</p>
+        <div class="card">
+            <h2>1. Exclusively Local Processing</h2>
+            <p><strong>PiGuard</strong> operates under a strict local-first architecture. We do not collect, store on external servers, sell, or share personal data, usage history, or scanned files with any third parties.</p>
+        </div>
 
-        <h2>2. Sensitive Permissions Justification</h2>
-        <ul>
-            <li><strong>MANAGE_EXTERNAL_STORAGE:</strong> Exclusively used on Android 11+ to compute local file SHA-256 integrity checksums and perform user-initiated cache cleanup.</li>
-            <li><strong>UsageStatsManager:</strong> Used locally to analyze night-time digital hygiene habits. Data never leaves the device.</li>
-            <li><strong>RECEIVE_SMS:</strong> Passively used solely to listen for the user-configured emergency trigger code to activate the remote anti-theft alarm. Other SMS content is never read or stored.</li>
-        </ul>
+        <div class="card">
+            <h2>2. Transparent Sensitive Permissions</h2>
+            <ul>
+                <li><strong>All Files Access (<code>MANAGE_EXTERNAL_STORAGE</code>):</strong> Strictly used on Android 11+ to compute local file <code>SHA-256</code> cryptographic checksums and perform user-initiated cache cleanups.</li>
+                <li><strong>Usage Stats Access (<code>UsageStatsManager</code>):</strong> Processed 100% locally to generate night-time digital hygiene insights. No metrics ever leave your device.</li>
+                <li><strong>SMS Receipt (<code>RECEIVE_SMS</code>):</strong> Passive listener solely used to detect the user-configured emergency keyword to trigger the remote anti-theft alarm. PiGuard never reads, stores, or transmits personal SMS content.</li>
+            </ul>
+        </div>
 
-        <h2>3. Encrypted Google Drive Backups</h2>
-        <p>When authenticating via Google Sign-In, streak progress and settings are encrypted locally using <strong>AES-256</strong> before being uploaded to the private <code>appDataFolder</code>. The developer has no access to your files or master key.</p>
+        <div class="card">
+            <h2>3. AES-256 Encrypted Google Drive Backups</h2>
+            <p>When opting in via Google Sign-In, streak progress and settings are encrypted locally using <strong>AES-256</strong> before uploading to your personal Google Drive's isolated <code>appDataFolder</code>. Neither the developer nor third parties can access your backup or master password.</p>
+        </div>
 
-        <h2>4. Data Deletion & Age of Consent</h2>
-        <p>Users can unlink their Google Account inside the app or delete backups directly in Google Drive. Uninstalling the app purges all local data. Intended for users aged 13 and older. Contact: <strong>soporte.piguard@gmail.com</strong></p>
+        <div class="card">
+            <h2>4. Data Deletion & Age of Consent</h2>
+            <p>You may unlink your Google Account anytime within the app or purge backups directly from your Google Drive settings. Uninstalling the app permanently erases all local databases and encryption keys.</p>
+            <p>Intended for users aged <strong>13 and older</strong>. Official contact: <code>soporte.piguard@gmail.com</code></p>
+        </div>
     </div>
+
+    <footer>
+        &copy; 2026 PiGuard Security &bull; Lucas G. Flores
+    </footer>
+</div>
+
+<script>
+    function setLang(lang) {
+        document.getElementById('content-es').classList.toggle('hidden', lang !== 'es');
+        document.getElementById('content-en').classList.toggle('hidden', lang !== 'en');
+        document.getElementById('btn-es').classList.toggle('active', lang === 'es');
+        document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+        document.getElementById('nav-privacy').textContent = lang === 'es' ? 'Privacidad' : 'Privacy';
+        document.getElementById('nav-terms').textContent = lang === 'es' ? 'Términos' : 'Terms';
+    }
+</script>
 
 </body>
 </html>
